@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Five Years of Show HN</title>
+	<style>
+		#outer {width:100%;}
+		#inner {max-width: 40em; margin: auto;}
+	</style>
+</head>
+<body>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-55888889-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5717eb0eff15d7ea"></script>
+
+<div id="outer">
+	<div id="inner">
+		<h1>Show Must Go On: Analyzing 10,000 of Show HN Submissions</h1>
+
+		<h2>Related Data and Charts</h2>
+		<p>Show HN Submissions:</p>
+		<ul>
+			<li><a href="https://github.com/antontarasenko/smq/blob/master/reports/hackernews-top-show-hn-100.md">Top 100 Show HN projects</a>: A table with the status checked manually</li>
+			<li><a href="https://drive.google.com/file/d/0B-fi5DaWfQWbdlVKMU84czFrNkU/view?pref=2&pli=1">Top 10,000 Show HN projects</a>: Detailed stats as for October, 2015</li>
+			<li><a href="https://plot.ly/~AntonTarasenko/23/top-5000-show-hn-submissions/">Top 5,000 projects timeline</a>: A chart embedding the current status of each project (as HTTP response status of the project's URL)</li>
+			<li>
+				<a href="https://hn.algolia.com/?query=show%20hn&sort=byPopularity&prefix&page=0&dateRange=all&type=story">Top Show HN projects</a>: An up-to-date list by Algolia</li>
+		</ul>
+		<p>Show HN Makers:</p>
+		<ul>
+			<li>
+				<a href="https://docs.google.com/spreadsheets/d/14lcsre5paNR7ZHkdxDtHKRWyY7zB9O5nstGBYoB4KIQ/edit?usp=sharing">Top 10,000 Show HN Makers</a>: A Google Sheet</li>
+		</ul>
+
+		<h2>The Best "Show HN" Projects</h2>
+		<p>I manually checked the status of the top 100 Show HN submissions. Eleven of them happened to be dead. The others still deliver what they promised in the original submission:</p>
+		<div>
+			<a href="https://plot.ly/~AntonTarasenko/20/?share_key=TKhXp8ErSKYvobfsNttZDM" target="_blank" title="Top 100 &quot;Show HN&quot; Submissions" style="display: block; text-align: center;"><img src="https://plot.ly/~AntonTarasenko/20.png?share_key=TKhXp8ErSKYvobfsNttZDM" alt="Top 100 &quot;Show HN&quot; Submissions" style="max-width: 100%;width: 1200px;"  width="1200" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
+			<script data-plotly="AntonTarasenko:20" sharekey-plotly="TKhXp8ErSKYvobfsNttZDM" src="https://plot.ly/embed.js" async></script>
+		</div>
+		<p>The connection between age and death is not evident here, but it reveals itself in a larger sample, as we'll see later.</p>
+
+		<h2>Top Makers</h2>
+		<p>The top 10 users ranked by total scores in Show HN submissions:</p>
+	<pre>
+Author			N	sum(score)
+-----------------------------------
+olalonde		7	3589
+negrit			9	1472
+vicapow			9	1464
+geoffschmidt		1	1386
+timmorgan		4	1318
+gkoberger		5	1306
+dang			1	1302
+omegaworks		1	1215
+hannahmitt		1	1172
+afshinmeh		25	1080
+	</pre>
+		<p>Top makers have few projects. In Top 100, the mode is one project. Only few authors, like <a
+				href="https://news.ycombinator.com/submitted?id=afshinmeh">afshinmeh</a>, have more than a dozen. Even in these cases, most scores come from a single submission.</p>
+		<p>The best examples of systematic success are <a href="https://news.ycombinator.com/submitted?id=ianstormtaylor">ianstormtaylor</a> and
+			<a href="https://news.ycombinator.com/submitted?id=erohead">erohead</a>: they have a high median score in six and three projects, respectively.</p>
+
+		<h2>Commercial Success</h2>
+		<p>To explore commercial success of Show HN projects, I combined submissions with the CrunchBase data. I joined both datasets by network location. Despite obvious problems with overlapping second-level domains (github.com hosts many Show HN projects, but belongs to a different entity in CrunchBase), most HN projects have individual domains and, therefore, match uniquely.</p>
+		<p>Conclusions:</p>
+		<ul>
+			<li>500 out of 10,000 top-rated Show HNs appear in the CrunchBase dataset.</li>
+			<li>$3.5 bn. of the total funding for matched projects, with some error due to matching process.</li>
+			<li>I found no statistical connection between HN scores and funding.</li>
+			<li>72% of the matched projects reside in the United States. The United Kingdom and Canada contribute 10%. The other 193 countries deliver the rest 18% of the projects.</li>
+			<li>7% of the projects are now defunct, according to CB. This is a relatively high survival rate.</li>
+		</ul>
+		<p>These stats are impressive, but they describe the best projects. What about the rest?</p>
+
+		<h2>The Average "Show HN" Project</h2>
+		<p>The front page appearances make a small fraction of the submissions. The median Show HN project looks modest:</p>
+		<div id="show-hn.rand.sumy"><img src="hist_ln_score.png" alt="Distribution of scores"></div>
+		<p>Projects earned these scores over one-two days after submission. How are they doing how?</p>
+		<p>I took a random sample of 10,000 Show HN submissions and sent a request to each associated URL. The servers returned status codes, which I used for dividing Show HN projects into living and dead. I interpreted code 200 as saying that the project still exists and all other codes (301, 404, timeout, and others) indicating a defunct project.</p>
+		<p>You can think of this status as indicating relevance. Relevant projects persist and fads disappear.</p>
+		<p>In this random sample, servers returned these codes:</p>
+		<div id="show-hn.rand.codes"><img src="bar_count_id_code.png" alt="Distribution of codes"></div>
+		<p>Description for each code is available <a
+				href="http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml">here</a></p>
+
+		<h2>Does Hacker News Predict Success?</h2>
+		<p>Users judge these projects early, and success on Hacker News may help developers decide what to do next with their project. Sometimes they succeed. For example, Stripe and Dropbox
+			<a href="https://news.ycombinator.com/item?id=7984947">started</a> with Show HN. So how well does the Hacker News community detect future hits?</p>
+		<p>I regressed the current status (alive or dead) on relevant variables:</p>
+		<div><img src="tab_reg_logit_probit.png" alt="Models for Show HN status"></div>
+		<p>Translating into English:</p>
+		<ul>
+			<li>The initial reception (score) does reflect the quality of the project, its survival rate.</li>
+			<li>More comments follow weaker projects.</li>
+			<li>Projects posted on weekends aren't better. In fact, the survival rate is flat across hours and days of the week when the project was submitted to HN.</li>
+			<li>Projects hosted by GitHub live longer. GitHub maintains old repos for free, and the death rate is naturally smaller. I included this variable to control for this bias. Other free web services (youtube.com, blogspot.com) host few projects, and I ignored them.</li>
+			<li>The average death rate is around 9% a year. After six years, a project is more likely to be dead than alive.</li>
+		</ul>
+		<p>These results hold across different specifications and estimation procedures (of which I included only the basic model). So a Hacker News reception has good predictive power, estimated around the OLS's R² = 14%.</p>
+		<h2>Comments</h2>
+		<ul>
+			<li>What about cases when error codes happen due to success, like redirect to a new domain? They don't affect the results. Regression of redirects on the same variables yields insignificant coefficients. The same for other error codes.</li>
+			<li>Here and there, natural logs helped adjust scores and comments for self-reinforcement effects. Meaning, when a project hits the front page, its score and comments grow faster than justified by the project's quality. Logs reduce this effect for better estimates.</li>
+		</ul>
+
+		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5717eb0eff15d7ea"></script>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+Comparing regressions				
+		(1)	(2)	(3)
+VARIABLES	LABELS	OLS	Logit	Probit
+				
+age	Age, years	-0.0921***	-0.421***	-0.256***
+		(0.00384)	(0.0186)	(0.0110)
+l_score	Log of score	0.0303***	0.141***	0.0856***
+		(0.00801)	(0.0373)	(0.0227)
+l_comments	Log of comments	-0.0247***	-0.114***	-0.0690***
+		(0.00770)	(0.0357)	(0.0217)
+1.is_weekend	Posted on weekends = 1	0.00542	0.0281	0.0154
+		(0.0128)	(0.0599)	(0.0364)
+is_github	Hosted by GitHub	0.325***	1.557***	0.944***
+		(0.0126)	(0.0659)	(0.0383)
+Constant	Constant	0.573***	0.344***	0.209***
+		(0.0125)	(0.0572)	(0.0350)
+				
+Observations		9,437	9,437	9,437
+R-squared		0.138		
+Standard errors in parentheses				
+*** p<0.01, ** p<0.05, * p<0.1				
