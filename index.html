@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Anton Tarasenko</title>
+    <link rel="stylesheet" href="commons/default.css">
+    <script src="commons/jquery-3.4.1.min.js"></script>
+</head>
 <body>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+<header id="loaded-header"></header>
+<script>$("#loaded-header").load("commons/header.html #common-header");</script>
 
-  ga('create', 'UA-55888889-2', 'auto');
-  ga('send', 'pageview');
-
-</script>
 <h1>Anton Tarasenko</h1>
-<p>That's a tunnel. The next station is <a href="https://antontarasenko.com/">antontarasenko.com</a>.</p>
+
+<footer id="loaded-footer"></footer>
+<script>$("#loaded-footer").load("commons/footer.html #common-footer");</script>
 </body>
 </html>

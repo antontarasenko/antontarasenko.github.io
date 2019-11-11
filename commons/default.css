@@ -1,0 +1,13 @@
+.common-header-style ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.common-header-style li {
+    display: inline-block;
+}
+
+.common-header-style li a::after {
+    content: '';
+    padding-right: 1em;
+}
